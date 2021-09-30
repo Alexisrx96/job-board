@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es" layout:decorate="~{_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>[[${tittle}]]</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Áreas</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <div class="dataTables_wrapper container-fluid dt-bootstrap4" id="DataTables_Table_0_wrapper">
+                            <div class="html5buttons"><a class="btn btn-outline btn-primary" href="#"
+                                                         th:href="@{area-new}">Nueva área</a>
+                            </div>
+                            <div class="dataTables_length" id="DataTables_Table_0_length"><label>Show <select
+                                    aria-controls="DataTables_Table_0" class="form-control form-control-sm"
+                                    name="DataTables_Table_0_length">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> entries</label></div>
+                            <div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Search:<input
+                                    aria-controls="DataTables_Table_0" class="form-control form-control-sm"
+                                    placeholder=""
+                                    type="search"></label></div>
+                            <div aria-live="polite" class="dataTables_info" id="DataTables_Table_0_info" role="status">
+                                Showing 1 to 25 of 57 entries
+                            </div>
+                            <table aria-describedby="DataTables_Table_0_info"
+                                   class="table table-striped table-bordered table-hover dataTables-example dataTable"
+                                   id="DataTables_Table_0" role="grid">
+                                <thead>
+                                <tr role="row">
+                                    <th aria-controls="DataTables_Table_0"
+                                        aria-label="Rendering engine: activate to sort column descending"
+                                        aria-sort="ascending" class="sorting_asc"
+                                        colspan="1" rowspan="1"
+                                        style="width: 183.063px;"
+                                        tabindex="0">Id
+                                    </th>
+                                    <th aria-controls="DataTables_Table_0"
+                                        aria-label="Browser: activate to sort column ascending" class="sorting"
+                                        colspan="1"
+                                        rowspan="1" style="width: 228.625px;"
+                                        tabindex="1">Área
+                                    </th>
+                                    <th aria-controls="DataTables_Table_0"
+                                        colspan="2"
+                                        rowspan="1" style="width: 228.625px;"
+                                        tabindex="2">Acciones
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:if="${areas.empty}">
+                                    <td colspan="2"> Ho hay áreas disponibles</td>
+                                </tr>
+                                <tr class="gradeA" role="row" th:each="area : ${areas}">
+                                    <td><span th:text="${area.id}"> Id </span></td>
+                                    <td><span th:text="${area.name}"> Area </span></td>
+                                    <td><a class="btn btn-info" th:href="@{/area-edit/{id}(id=${area.id})}"> Editar </a>
+                                    </td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" data-toggle="modal"
+                                               th:href="'#modal-form' + ${area.id}">Eliminar</a>
+                                        </div>
+
+                                        <div aria-hidden="true" class="modal fade" th:id="'modal-form' + ${area.id}"
+                                             style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <h3 class="m-t-none m-b">Eliminar</h3>
+                                                                <p>¿Desea eliminar el área <span th:text="${area.name}"></span> ?</p>
+                                                                <form role="form" th:action="@{~/area-delete}" method="post">
+                                                                    <input name="id" th:value="@{${area.id}}" type="hidden"/>
+                                                                    <div>
+                                                                        <button class="btn btn-sm btn-primary float-right m-t-n-xs"
+                                                                                type="submit"><strong>Eliminar</strong>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled"
+                                        id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0"
+                                                                            class="page-link"
+                                                                            data-dt-idx="0" href="#"
+                                                                            tabindex="0">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a aria-controls="DataTables_Table_0"
+                                                                                    class="page-link"
+                                                                                    data-dt-idx="1" href="#"
+                                                                                    tabindex="0">1</a></li>
+                                    <li class="paginate_button page-item "><a aria-controls="DataTables_Table_0"
+                                                                              class="page-link"
+                                                                              data-dt-idx="2" href="#"
+                                                                              tabindex="0">2</a></li>
+                                    <li class="paginate_button page-item "><a aria-controls="DataTables_Table_0"
+                                                                              class="page-link"
+                                                                              data-dt-idx="3" href="#"
+                                                                              tabindex="0">3</a></li>
+                                    <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a
+                                            aria-controls="DataTables_Table_0"
+                                            class="page-link"
+                                            data-dt-idx="4"
+                                            href="#"
+                                            tabindex="0">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
