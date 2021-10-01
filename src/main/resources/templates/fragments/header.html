@@ -2,16 +2,15 @@
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
 <div class="row wrapper border-bottom white-bg page-heading" th:fragment="heading">
     <!-- TODO MAY REMOVE BREADCRUMBS -->
     <div class="col-sm-4">
-        <h2>This is main title</h2>
+        <h2>[[${title}]]</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">This is</a>
+                <a th:href="@{~/}"> Inicio </a>
             </li>
             <li class="breadcrumb-item active">
                 <strong>Breadcrumb</strong>

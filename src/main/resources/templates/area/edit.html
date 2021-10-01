@@ -14,16 +14,17 @@
                 <h5>All form elements <small>With custom checbox and radion elements.</small></h5>
             </div>
             <div class="ibox-content">
-                <form method="post" th:action="@{~/area-edit}" th:object="${area}">
+                <form method="post" th:action="@{~/area/update}" th:object="${area}">
                     <input th:field="*{id}" type="hidden"/>
                     <div class="form-group  row"><label class="col-sm-2 col-form-label">Nombre de área</label>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" th:field="*{name}"></div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group row">
                         <div class="col-sm-4 col-sm-offset-2">
-                            <a class="btn btn-white btn-sm" href="#" th:href="@{~/area-list}">Cancelar</a>
+                            <a class="btn btn-white btn-sm" href="#" th:href="@{~/area/list}">Cancelar</a>
                             <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
                         </div>
                     </div>
