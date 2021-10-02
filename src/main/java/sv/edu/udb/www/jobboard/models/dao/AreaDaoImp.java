@@ -39,7 +39,7 @@ public class AreaDaoImp implements AreaDao {
 
     @Override
     public void deleteArea(int id) {
-        Area area = entityManager.find(Area.class,id);
+        Area area = getArea(id);
         entityManager.remove(area);
     }
 }

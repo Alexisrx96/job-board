@@ -33,14 +33,12 @@ public class CompanyAddressDaoImp implements CompanyAddressDao{
 
     @Override
     public void deleteCompanyAddress(int id) {
-        CompanyAddress companyAddress = entityManager.find(CompanyAddress.class,id);
+        CompanyAddress companyAddress = getCompanyAddress(id);
         entityManager.remove(companyAddress);
     }
 
     @Override
     public void createCompanyAddress(CompanyAddress companyAddress) {
-        // int id == undefined
         entityManager.persist(companyAddress);
-        //  id = último id
     }
 }

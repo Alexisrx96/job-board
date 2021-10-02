@@ -25,13 +25,13 @@
                 <a href="#" th:href="@{~/}"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span></a>
             </li>
             <li class="active" th:classappend="${module == 'area' ? 'active' : ''}">
-                <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">Área</span><span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Área</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse in" aria-expanded="true">
                     <li th:classappend="${module_l2 == 'area/all' ? 'active' : ''}">
-                        <a href="#" th:href="@{~/area/list}"><i class="fa fa-th-large"></i> <span class="nav-label">Lista</span> </a>
+                        <a href="#" th:href="@{~/area/list}"><span class="nav-label">Lista</span> </a>
                     </li>
                     <li th:classappend="${module_l2 == 'area/all' ? 'active' : ''}">
-                        <a href="#" th:href="@{~/area/new}"><i class="fa fa-th-large"></i> <span class="nav-label">Nuevo</span> </a>
+                        <a href="#" th:href="@{~/area/new}"><span class="nav-label">Nuevo</span> </a>
                     </li>
                 </ul>
             </li>
