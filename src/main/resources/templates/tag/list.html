@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>[[${tittle}]]</title>
+    <title>[[${title}]]</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -18,8 +18,8 @@
 
                     <div class="table-responsive">
                         <div class="dataTables_wrapper container-fluid dt-bootstrap4" id="DataTables_Table_0_wrapper">
-                            <div class="html5buttons"><a class="btn btn-outline btn-primary" href="#"
-                                                         th:href="@{~/area/new}">Nueva área</a>
+                            <div class="html5buttons"><a class="btn btn-primary" href="#"
+                                                         th:href="@{~/tag/new}">Nueva área</a>
                             </div>
                             <div class="dataTables_length" id="DataTables_Table_0_length"><label>Show <select
                                     aria-controls="DataTables_Table_0" class="form-control form-control-sm"
@@ -63,21 +63,21 @@
                                 </thead>
                                 <tbody>
 
-                                <tr th:if="${areas.empty}">
-                                    <td colspan="2"> Ho hay áreas disponibles</td>
+                                <tr th:if="${tags.empty}">
+                                    <td colspan="2"> Ho hay tags disponibles</td>
                                 </tr>
-                                <tr class="gradeA" role="row" th:each="area : ${areas}">
-                                    <td><span th:text="${area.id}"> Id </span></td>
-                                    <td><span th:text="${area.name}"> Area </span></td>
-                                    <td><a class="btn btn-info" th:href="@{~/area/edit/{id}(id=${area.id})}"> Editar </a>
+                                <tr class="gradeA" role="row" th:each="tag : ${tags}">
+                                    <td><span th:text="${tag.id}"> Id </span></td>
+                                    <td><span th:text="${tag.name}"> Tag </span></td>
+                                    <td><a class="btn btn-info" th:href="@{~/tag/edit/{id}(id=${tag.id})}"> Editar </a>
                                     </td>
                                     <td>
                                         <div class="text-center">
                                             <a class="btn btn-primary" data-toggle="modal"
-                                               th:href="'#modal-form' + ${area.id}">Eliminar</a>
+                                               th:href="'#modal-form' + ${tag.id}">Eliminar</a>
                                         </div>
 
-                                        <div aria-hidden="true" class="modal fade" th:id="'modal-form' + ${area.id}"
+                                        <div aria-hidden="true" class="modal fade" th:id="'modal-form' + ${tag.id}"
                                              style="display: none;">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -85,9 +85,9 @@
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <h3 class="m-t-none m-b">Eliminar</h3>
-                                                                <p>¿Desea eliminar el área <span th:text="${area.name}"></span> ?</p>
-                                                                <form role="form" th:action="@{/area/delete}" method="post">
-                                                                    <input name="id" th:value="@{${area.id}}" type="hidden"/>
+                                                                <p>¿Desea eliminar el área <span th:text="${tag.name}"></span> ?</p>
+                                                                <form role="form" th:action="@{/tag/delete}" method="post">
+                                                                    <input name="id" th:value="@{${tag.id}}" type="hidden"/>
                                                                     <div>
                                                                         <button class="btn btn-sm btn-primary float-right m-t-n-xs"
                                                                                 type="submit"><strong>Eliminar</strong>

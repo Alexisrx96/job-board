@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Validated
 @Getter
@@ -16,6 +16,6 @@ public class TagForm {
     private int id;
 
     @NotBlank(message = "El nombre es obligatorio")
-    @Max(value = 50,message = "El máximo son 50 caracteres")
+    @Size(min = 1, max = 50, message = "El máximo son 50 caracteres")
     private String name;
 }

@@ -70,6 +70,6 @@ public class AreaController {
     @PostMapping("/delete")
     public String deleteArea(@RequestParam int id) {
         areaService.removeArea(id);
-        return "redirect:area-list";
+        return "redirect:/area/list";
     }
 }

@@ -35,6 +35,17 @@
                     </li>
                 </ul>
             </li>
+            <li class="active" th:classappend="${module == 'tag' ? 'active' : ''}">
+                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Tag</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                    <li th:classappend="${module_l2 == 'tag/all' ? 'active' : ''}">
+                        <a href="#" th:href="@{~/tag/list}"><span class="nav-label">Lista</span> </a>
+                    </li>
+                    <li th:classappend="${module_l2 == 'tag/all' ? 'active' : ''}">
+                        <a href="#" th:href="@{~/tag/new}"><span class="nav-label">Nuevo</span> </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
 
     </div>

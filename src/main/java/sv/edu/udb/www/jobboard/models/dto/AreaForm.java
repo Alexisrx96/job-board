@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Validated
 @Getter
@@ -15,6 +15,6 @@ public class AreaForm {
     private int id;
 
     @NotBlank(message = "El nombre es obligatorio")
-    @Max(200)
+    @Size(min = 1, max = 200, message = "El máximo son 200 caracteres")
     private String name;
 }
