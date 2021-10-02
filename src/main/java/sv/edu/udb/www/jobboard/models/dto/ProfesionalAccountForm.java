@@ -13,23 +13,24 @@ public class ProfesionalAccountForm {
 
     @NotBlank(message = "El correo es obligatorio")
     @Email(message = "Dirección email no válida")
-    @Max(message = "Demasiado largo", value = 255)
+    @Max(value = 255,message = "El máximo son 255 caracteres")
     private String email;
 
     @NotBlank(message = "La contraseña es obligatoria")
-    @Size(min = 6,max = 30)
+    @Min(value = 6,message = "El mínimo son 6 caracteres")
     private String password;
 
     @NotBlank(message = "El nombre es obligatorio")
     @Pattern(regexp = "^[\\p{L} .'-]+$")
-    @Max(100)
+    @Max(value = 100,message = "El máximo son 100 caracteres")
     private String firstName;
 
     @NotBlank(message = "El apellido es obligatorio")
     @Pattern(regexp = "^[\\p{L} .'-]+$")
-    @Max(100)
+    @Max(value = 100,message = "El máximo son 100 caracteres")
     private String lastName;
 
+    //ComboBox
     @NotNull(message = "El área es obligatoria")
     private int area;
 }

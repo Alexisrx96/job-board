@@ -14,6 +14,7 @@ public class AccountTypeDaoImp implements AccountTypeDao {
     @Autowired
     EntityManager entityManager;
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<AccountType> getAccountTypes() {
         String query = "FROM AccountType";

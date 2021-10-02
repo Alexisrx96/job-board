@@ -6,15 +6,19 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Validated
 @Getter
 @Setter
-public class AreaForm {
-    //Hidden
+public class ResumeForm {
+
     private int id;
 
-    @NotBlank(message = "El nombre es obligatorio")
-    @Max(200)
-    private String name;
+    @NotNull
+    private int profile;
+
+    @NotBlank(message = "El archivo es obligatorio")
+    @Max(value = 500, message = "El nombre del archivo es demasiado largo")
+    private String address;
 }

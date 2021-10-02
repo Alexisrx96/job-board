@@ -11,9 +11,11 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class TagForm {
+
+    //Hidden
     private int id;
 
     @NotBlank(message = "El nombre es obligatorio")
-    @Max(50)
+    @Max(value = 50,message = "El máximo son 50 caracteres")
     private String name;
 }

@@ -15,6 +15,7 @@ public class AreaDaoImp implements AreaDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Area> getAreas(){
         String query = "FROM Area";

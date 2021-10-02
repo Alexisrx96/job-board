@@ -14,6 +14,8 @@ import java.util.List;
 public class AccountStateDaoImp implements AccountStateDao{
     @Autowired
     EntityManager entityManager;
+
+    @SuppressWarnings("unchecked")
     @Override
     public List<AccountState> getAccountStates() {
         String query = "FROM AccountState";

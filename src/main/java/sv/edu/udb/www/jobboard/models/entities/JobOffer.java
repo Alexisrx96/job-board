@@ -16,10 +16,10 @@ public class JobOffer implements Serializable {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(name = "title", nullable = false, length = 200)
     private String title;
 
-    @Column(name = "description", nullable = false, length = 1000)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @ManyToOne(optional = false)

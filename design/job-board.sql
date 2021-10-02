@@ -42,7 +42,8 @@ CREATE TABLE tag(
 CREATE TABLE profesional_profile(
     id INT AUTO_INCREMENT NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-	full_name VARCHAR(200) NOT NULL,
+	first_name VARCHAR(100) NOT NULL,
+	last_name VARCHAR(100) NOT NULL,
     area_id INT NOT NULL,
     CONSTRAINT pk_profesional_profile_id PRIMARY KEY (id),
     CONSTRAINT fk_profesional_profile_area FOREIGN KEY(area_id) REFERENCES area(id),
@@ -91,7 +92,7 @@ CREATE TABLE job_offer_state(
 
 CREATE TABLE job_offer(
     id INT AUTO_INCREMENT NOT NULL,
-	title VARCHAR(100) NOT NULL,
+	title VARCHAR(200) NOT NULL,
 	description TEXT NOT NULL,
     company_id int NOT NULL,
     state_id INT NOT NULL,

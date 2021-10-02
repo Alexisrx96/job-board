@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/api/orders").hasAnyRole("Customer", "Admin")
                 //.antMatchers(HttpMethod.POST, "/api/submit-order").hasAnyRole("Customer", "Admin")
                 //.antMatchers("/api/**", "/create-admin").hasRole("Admin")
-                .anyRequest().permitAll()/**/;//*/
+                .anyRequest().permitAll()
                 //.and().sessionManagement()
                 //.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);*/
