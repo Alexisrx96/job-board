@@ -30,8 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+        http
+                .authorizeRequests()
+                .antMatchers("/css/**", "/font-awesome/**", "/fonts/**", "/img/**", "/js/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login").permitAll();
+        //http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         /*
         http.cors().and()
                 .csrf().disable()
