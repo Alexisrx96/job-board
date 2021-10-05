@@ -2,11 +2,11 @@ package sv.edu.udb.www.jobboard.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import sv.edu.udb.www.jobboard.filters.JwtRequestFilter;
 import sv.edu.udb.www.jobboard.services.MyUserDetailsService;
@@ -18,18 +18,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    BCryptPasswordEncoder passwordEncoder;
+    BCryptPasswordEncoder encoder;
 
     @Autowired
     private MyUserDetailsService userDetailsService;
 
+    //Calls auth provider
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       // auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+        //auth.authenticationProvider(authProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /*
         http
                 .authorizeRequests()
                 .antMatchers("/css/**", "/font-awesome/**", "/fonts/**", "/img/**", "/js/**").permitAll()
@@ -52,17 +54,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);*/
     }
-/*
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }*/
 
+/*
+    //this is how encrypt the user's password
     @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(encoder());
+        return authProvider;
+    }
+    //Password encoder
+    @Bean
+    public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
+    */
 }
 
 
