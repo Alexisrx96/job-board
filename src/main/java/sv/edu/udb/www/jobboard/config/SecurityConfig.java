@@ -31,8 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*
-        http
+       /* http
                 .authorizeRequests()
                 .antMatchers("/css/**", "/font-awesome/**", "/fonts/**", "/img/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
@@ -55,7 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);*/
     }
 
-/*
     //this is how encrypt the user's password
     @Bean
     public DaoAuthenticationProvider authProvider() {
@@ -69,7 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-    */
 }
 
 

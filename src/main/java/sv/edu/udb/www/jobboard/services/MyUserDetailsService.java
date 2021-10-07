@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import sv.edu.udb.www.jobboard.models.dao.AccountDao;
+import sv.edu.udb.www.jobboard.models.entities.Account;
 
 import java.util.ArrayList;
 
@@ -19,9 +20,9 @@ public class MyUserDetailsService implements UserDetailsService {
     AccountDao accountDao;
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        var u = accountDao.getAccount(s);
+        Account account = accountDao.getAccount(s);
         var grantedAuthorities = new ArrayList<GrantedAuthority>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(u.getType().getName()));
-        return new User(u.getId(),u.getPwrd(), grantedAuthorities);
+        grantedAuthorities.add(new SimpleGrantedAuthority(account.getType().getName()));
+        return new User(account.getId(),account.getPwrd(), grantedAuthorities);
     }
 }
