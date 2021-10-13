@@ -25,6 +25,13 @@ public class CompanyProfileDaoImp implements CompanyProfileDao{
     }
 
     @Override
+    public CompanyProfile getCompanyProfileByEmail(String email) {
+        String query = "SELECT C FROM CompanyProfile C WHERE C.email like ?1";
+        return entityManager.createQuery(query,CompanyProfile.class)
+                .setParameter(1, email).getSingleResult();
+    }
+
+    @Override
     public CompanyProfile getCompanyProfile(int id) {
         return entityManager.find(CompanyProfile.class,id);
     }

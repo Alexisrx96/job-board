@@ -30,6 +30,12 @@ public class ProfesionalProfileDaoImp implements ProfesionalProfileDao{
     }
 
 
+    @Override
+    public ProfesionalProfile getProfesionalProfileByEmail(String email) {
+        String query = "SELECT P FROM ProfesionalProfile P WHERE P.email like ?1";
+        return entityManager.createQuery(query,ProfesionalProfile.class)
+                .setParameter(1, email).getSingleResult();
+    }
 
 
     @Override

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es"
+      layout:decorate="~{_layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="<http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>BDT | Profile Company</title>
+    <th:block layout:fragment="css">
+        <link th:href="@{~/css/plugins/iCheck/custom.css}" rel="stylesheet">
+        <link th:href="@{~/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
+    </th:block>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
+
+    <center>
+        <button class="btn btn-primary " style="width:200px;height:40px;">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Aprobados</font>
+            </font>
+        </button>
+        <button class="btn btn-primary " style="width:200px;height:40px;">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Rechazados</font>
+            </font>
+        </button>
+        <button class="btn btn-primary " style="width:200px;height:40px;">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Pendientes</font>
+            </font>
+        </button>
+    </center>
+    <br>
+    <br>
+    <!--aprobadas-->
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5>Nombre Empresa</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Descripción</span><br>
+            <p>detail...</p>
+            <br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                DESACTIVAR
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Desactivar Perfil</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¡ Perfil desactivado con exito !
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!--Rechazada-->
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5>Nombre Empresa</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Descripción</span><br>
+            <p>detail...</p>
+            <br>
+        </div>
+    </div>
+
+    <!--Pendiente-->
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5>Nombre Empresa</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Descripción</span><br>
+            <p>detail...</p>
+            <br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                APROBAR
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel2">Aprobar Perfil</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¡ Perfil aprobado con exito !
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                RECHAZAR
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel3">Rechazar Perfil</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¡ Perfil rechazado con exito !
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+</div>
+<th:block layout:fragment="scripts">
+    <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
+    <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:inline="javascript">
+
+    </script>
+</th:block>
+</body>
+</html>

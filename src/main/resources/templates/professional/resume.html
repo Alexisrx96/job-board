@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es"
+      layout:decorate="~{_layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="<http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BDT | Resume</title>
+    <th:block layout:fragment="css">
+        <link th:href="@{~/css/plugins/iCheck/custom.css}" rel="stylesheet">
+        <link th:href="@{~/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
+    </th:block>
 </head>
 <body>
+
+<div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
+    <h1>Curriculum vitae</h1>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <h3>Upload file</h3>
+    <div class="custom-file">
+        <input id="logo" type="file" class="custom-file-input">
+        <label for="logo" class="custom-file-label">Choose file...</label><br>
+        <br>
+        <button class="btn btn-primary " type="button">
+            <i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Upload</span></button>
+        <!--button functionality is missing-->
+    </div>
+</div>
+
+
+
+</div>
+
+<th:block layout:fragment="scripts">
+    <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
+    <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:inline="javascript">
+
+            $('.custom-file-input').on('change', function() {
+                let fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').addClass("selected").html(fileName);
+            });
+</script>
+</th:block>
 
 </body>
 </html>

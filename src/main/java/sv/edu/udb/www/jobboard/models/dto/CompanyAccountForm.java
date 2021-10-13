@@ -13,7 +13,7 @@ public class CompanyAccountForm {
 
     @NotBlank(message = "El correo es obligatorio")
     @Email(message = "Dirección email no válida")
-    @Max(value = 255, message = "El máximo son 255 caracteres")
+    @Size(max = 255, message = "El máximo son 255 caracteres")
     private String email;
 
     @NotBlank(message = "La contraseña es obligatoria")
@@ -21,10 +21,10 @@ public class CompanyAccountForm {
     private String password;
 
     @NotBlank(message = "El nombre es obligatorio")
-    @Max(200)
+    @Size(max = 200, message = "El máximo son 200 caracteres")
     private String name;
 
-    @NotBlank(message = "El nombre es obligatorio")
-    @Max(1000)
+    @NotBlank(message = "La información es obligatoria")
+    @Size(max = 1000, message = "El máximo son 200 caracteres")
     private String about;
 }

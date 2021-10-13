@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class HomeController {
-
     @ModelAttribute("module")
     public String module() {
         return "home";
     }
-    @GetMapping(path = "/")
+    @GetMapping(path = {"/",""})
     public String getIndex(Model model){
         model.addAttribute("some","Index in controller");
         model.addAttribute("tittle","Index");

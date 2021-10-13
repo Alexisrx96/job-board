@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 @Validated
 @Getter
 @Setter
-public class ProfesionalAccountForm {
+public class ProfessionalAccountForm {
 
     @NotBlank(message = "El correo es obligatorio")
     @Email(message = "Dirección email no válida")

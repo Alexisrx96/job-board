@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es"
+      layout:decorate="~{_layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="<http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BDT | Apply</title>
+    <th:block layout:fragment="css">
+        <link th:href="@{~/css/plugins/iCheck/custom.css}" rel="stylesheet">
+        <link th:href="@{~/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
+    </th:block>
 </head>
 <body>
+<div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
+    <h1>Applying | Accounting assistant</h1>
+    <br>
+    <h2>Select CV</h2>
+    <hr>
+    <br>
+    <p>...</p>
+    <br>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-paper-plane"></i>&nbsp;&nbsp;To accept</a>
+    </button>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Accounting assistant</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¡ We have sent your CV successfully !
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-info">
+                        <a href="#" th:href="@{~/p/applications}">
+                            My applications </a>
+                    </button>
+                    <button type="button" class="btn btn-outline btn-info">
+                        <a href="#" th:href="@{~/p/display-job-offer}">
+                            Job offers </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="scripts">
+    <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
+    <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:inline="javascript">
+
+    </script>
+</th:block>
 </body>
 </html>

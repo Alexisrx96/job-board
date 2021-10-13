@@ -9,6 +9,7 @@ public interface ProfesionalProfileDao {
 
     List<ProfesionalProfile> getProfesionalProfiles();
     ProfesionalProfile getProfesionalProfile(int id);
+    ProfesionalProfile getProfesionalProfileByEmail(String email);
     void updateProfesionalProfile(ProfesionalProfile profesionalProfile);
     void deleteProfesionalProfile(int id);
     void createProfesionalProfile(ProfesionalProfile profesionalProfile);

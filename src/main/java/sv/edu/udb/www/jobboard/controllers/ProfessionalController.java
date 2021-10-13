@@ -4,12 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import sv.edu.udb.www.jobboard.models.dto.ProfessionalAccountForm;
 
 @Controller
 @RequestMapping(path = "/p")
 public class ProfessionalController {
     @GetMapping(path = "/profile")
     public String getProfile(Model model){
+        model.addAttribute("form", new ProfessionalAccountForm());
         return "professional/profile";
     }
 

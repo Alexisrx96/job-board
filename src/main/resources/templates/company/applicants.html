@@ -5,51 +5,40 @@
       xmlns:layout="<http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>[[${title}]]</title>
+    <title>BDT | Applicants</title>
     <th:block layout:fragment="css">
         <link th:href="@{~/css/plugins/iCheck/custom.css}" rel="stylesheet">
         <link th:href="@{~/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
     </th:block>
 </head>
 <body>
-
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
-    <center>
-    <button type="button" class="btn btn-w-m btn-primary" style="width:200px;height:40px;">Record</button>
-    <button type="button" class="btn btn-w-m btn-primary" style="width:200px;height:40px;">Active offers</button>
-    </center>
-    <br>
 
     <div class="ibox ">
         <div class="ibox-title">
-            <h5>Workstation</h5>
+            <h5>Karina García Barrera | Cargo</h5>
             <div class="ibox-tools">
                 <a class="collapse-link">
                     <i class="fa fa-chevron-up"></i>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
                 </a>
             </div>
         </div>
 
         <div class="ibox-content">
-            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
-            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Accounting and Finance</span><br>
-            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Curriculum Vitae</span><br>
             <br>
-            <button class="btn btn-outline btn-info" type="button">
-                <a href="#" th:href="@{~/p/display-job-offer}">
-                    <i class="fa fa-check"></i>&nbsp;&nbsp;View deal</a>
-            </button>
         </div>
     </div>
 
 </div>
-
 <th:block layout:fragment="scripts">
     <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
     <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
     <script th:inline="javascript">
     </script>
 </th:block>
-
 </body>
 </html>
