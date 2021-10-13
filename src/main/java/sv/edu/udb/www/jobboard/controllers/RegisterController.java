@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import sv.edu.udb.www.jobboard.models.dto.CompanyAccountForm;
 import sv.edu.udb.www.jobboard.models.dto.ProfessionalAccountForm;
 import sv.edu.udb.www.jobboard.services.AccountService;
+import sv.edu.udb.www.jobboard.services.AreaService;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,8 @@ public class RegisterController {
 
     @Autowired
     AccountService accountService;
+    @Autowired
+    AreaService areaService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -26,14 +29,17 @@ public class RegisterController {
 
     @GetMapping("/register-professional")
     public String registerProfessional(Model model) {
-        //model.addAttribute("", new Object());
-        return "company/profile";
+        model.addAttribute("professional", new ProfessionalAccountForm());
+        model.addAttribute("areas",areaService.getAreaList());
+        return "register-professional";
     }
 
     @PostMapping("/register-professional")
     public String saveProfessional(@ModelAttribute("professional")@Valid ProfessionalAccountForm professional, final BindingResult result) {
-        //model.addAttribute("", new Object());
-        return "company/profile";
+        if(result.hasErrors())
+            return "register-professional";
+        accountService.newCompany(professional);
+        return "redirect:login";
     }
 
     @GetMapping("/register-company")
