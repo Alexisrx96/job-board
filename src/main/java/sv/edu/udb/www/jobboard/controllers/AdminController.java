@@ -51,7 +51,7 @@ public class AdminController {
 
     @GetMapping("/professionals")
     public String professionals(Model model) {
-        //model.addAttribute("", new Object());
+        model.addAttribute("professionals", adminService.getProfessionalProfiles());
         return "admin/profile/professional";
     }
 
