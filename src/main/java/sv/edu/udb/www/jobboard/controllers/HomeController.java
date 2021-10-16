@@ -11,7 +11,7 @@ public class HomeController {
     public String module() {
         return "home";
     }
-    @GetMapping(path = {"/",""})
+    @GetMapping(path = {"/","","/home"})
     public String getIndex(Model model){
         model.addAttribute("some","Index in controller");
         model.addAttribute("tittle","Index");

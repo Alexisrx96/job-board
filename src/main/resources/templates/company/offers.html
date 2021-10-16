@@ -14,7 +14,7 @@
 <body>
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
 
-    <div class="ibox ">
+    <div class="ibox">
         <div class="ibox-title">
             <h5>Workstation</h5>
             <div class="ibox-tools">
@@ -24,10 +24,12 @@
             </div>
         </div>
 
-        <div class="ibox-content">
-            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
-            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Accounting and Finance</span><br>
-            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
+        <div class="ibox-content" th:each="offer : ${offers}">
+            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">Empresa: [[${offer.company.name}]]</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Titulo: [[${offer.title}]]</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Descripción: [[${offer.description}]]</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Estado: [[${offer.state.name}]]</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Área: [[${offer.area.name}]]</span><br>
             <br>
             <button class="btn btn-outline btn-info" type="button">
                 <a href="#" th:href="@{~/c/display-offer}">

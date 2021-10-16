@@ -20,6 +20,7 @@ public class CompanyAccountForm {
     @Size(min = 6,max = 30)
     private String password;
 
+
     @NotBlank(message = "El nombre es obligatorio")
     @Size(max = 200, message = "El máximo son 200 caracteres")
     private String name;

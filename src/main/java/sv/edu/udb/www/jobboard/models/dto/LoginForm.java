@@ -4,12 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotBlank;
+
 @Validated
 @Getter
 @Setter
-public class JobApplyForm {
-
-    private int id;
-    private int jobOffer;
-    private int resume;
+public class LoginForm {
+    @NotBlank
+    private String email;
+    @NotBlank
+    private String password;
 }

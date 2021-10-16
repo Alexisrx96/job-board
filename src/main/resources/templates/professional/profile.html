@@ -15,32 +15,40 @@
 <body>
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
     <h1>Edit profile</h1>
-    <div id="example-basic">
+    <form id="example-basic" method="post" th:action="@{~/professional/update}" th:object="${form}">
         <h3>Account Data</h3>
         <section>
-            <form role="form">
-                <div class="form-group" th:object="${form}">
+            <div role="form" >
+                <div class="form-group" >
                     <label for="email">Email *</label>
                     <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-                    <input id="email" class="form-control" type="text" th:field="*{email}">
+                    <input id="email" class="form-control required" type="text" th:field="*{email}">
                 </div>
-                <div class="form-group">
-                    <label>Password *</label>
-                    <input type="password" placeholder="Password" class="form-control required">
+                <div class="form-group" >
+                    <label for="password">Password *</label>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                    <input id="password" type="password" class="form-control required" th:field="*{password}">
                 </div>
-
+            </div>
         </section>
         <h3>General data</h3>
         <section>
-            <div class="form-group"><label>Name *</label>
-                <input type="name" placeholder="Name" class="form-control required"></div>
-            <div class="form-group"><label>Last name *</label>
-                <input type="lastname" placeholder="Last name" class="form-control required"></div>
-            <div class="form-group"><label>Area *</label>
-                <input type="area" placeholder="Area" class="form-control required"></div>
+            <div role="form">
+                <div class="form-group" >
+                    <label for="firstName">Name *</label>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+                    <input id="firstName" type="text" class="form-control required" th:field="*{firstName}"></div>
+                <div class="form-group">
+                    <label for="lastName">Last name *</label>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+                    <input id="lastName" type="text" class="form-control required" th:field="*{lastName}"></div>
+                <div class="form-group">
+                    <label for="area">Area *</label>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></div>
+                    <input id="area" type="text" class="form-control required" th:field="*{area}"></div>
+            </div>
         </section>
     </form>
-    </div>
 
 
 </div>

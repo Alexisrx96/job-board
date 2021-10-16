@@ -54,11 +54,6 @@ public class WebConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/area").setViewName("area");
-    }
 
     @Bean
     public LayoutDialect layoutDialect() {

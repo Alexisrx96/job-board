@@ -1,22 +1,32 @@
 package sv.edu.udb.www.jobboard.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import sv.edu.udb.www.jobboard.services.AdminService;
+import sv.edu.udb.www.jobboard.services.CompanyService;
+import sv.edu.udb.www.jobboard.services.ProfessionalService;
 
 @Controller
 @RequestMapping(path = "/a")
 public class AdminController {
 
+    @Autowired
+    ProfessionalService professionalService;
+
+    @Autowired
+    CompanyService companyService;
+    @Autowired
+    AdminService adminService;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
+
     @ModelAttribute("module")
     public String module() {
         return "area";
@@ -35,7 +45,7 @@ public class AdminController {
 
     @GetMapping("/companies")
     public String companies(Model model) {
-        //model.addAttribute("", new Object());
+        model.addAttribute("companies", adminService.getCompanyProfiles());
         return "admin/profile/company";
     }
 
@@ -52,9 +62,9 @@ public class AdminController {
     }
 
 
-    @GetMapping("/display-professional")
-    public String displayProfessional(Model model) {
-        //model.addAttribute("", new Object());
+    @GetMapping("/display-professional/{id}")
+    public String displayProfessional(Model model, @PathVariable int id) {
+        model.addAttribute("professional", professionalService.getProfessional(id));
         return "admin/profile/display-professional";
     }
 }

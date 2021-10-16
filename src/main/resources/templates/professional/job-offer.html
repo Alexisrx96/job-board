@@ -13,139 +13,83 @@
 </head>
 <body>
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
-<center>
-        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width:200px;height:40px;" aria-expanded="false">
-        <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">Company</font>
-        </font>
-    </button>
-    <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; top: 34px; left: 0px; will-change: top, left;">
-        <li><a class="dropdown-item" href="#">
-            <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Company 1</font>
-            </font></a></li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Company 2</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Company 3</font>
-                </font>
-            </a>
-        </li>
-    </ul>
 
-    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width:200px;height:40px;" aria-expanded="false">
-        <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">Workstation</font>
-        </font>
-    </button>
-    <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; top: 34px; left: 0px; will-change: top, left;">
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Supervisor</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Administrator</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Accounting clerk</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Technical</font>
-                </font>
-            </a>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-md-4">
+            <center>
+                <h2>Seleccionar Empresa</h2>
+                <br>
+                <select class="form-select" aria-label="Default select example" style="width:150px">
+                    <option selected>Empresa 1</option>
+                    <option value="1">Empresa 2</option>
+                    <option value="2">Empresa 3</option>
+                    <option value="3">Empresa 4</option>
+                </select>
+            </center>
+        </div>
 
-    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width:200px;height:40px;" aria-expanded="false">
-        <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">Labor area</font>
-        </font>
-    </button>
-    <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; top: 34px; left: 0px; will-change: top, left;">
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Human Resources</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Finance</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Marketing and sales</font>
-                </font>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="#">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Technology</font>
-                </font>
-            </a>
-        </li>
-    </ul>
-</center>
-<br>
+        <div class="col-md-4">
+            <center>
+                <h2>Seleccionar Cargo</h2>
+                <br>
+                <select class="form-select" aria-label="Default select example" style="width:150px">
+                    <option selected>Cargo 1</option>
+                    <option value="1">Cargo 2</option>
+                    <option value="2">Cargo 3</option>
+                    <option value="3">Cargo 4</option>
+                </select>
+            </center>
+        </div>
 
-<div class="ibox ">
-    <div class="ibox-title">
-        <h5>Workstation</h5>
-        <div class="ibox-tools">
-            <a class="collapse-link">
-                <i class="fa fa-chevron-up"></i>
-            </a>
+        <div class="col-md-4">
+            <center>
+                <h2>Seleccionar Area Laboral</h2>
+                <br>
+                <select class="form-select" aria-label="Default select example" style="width:150px">
+                    <option selected>Area 1</option>
+                    <option value="1">Area 2</option>
+                    <option value="2">Area 3</option>
+                    <option value="3">Area 4</option>
+                </select>
+            </center>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
 
-    <div class="ibox-content">
-        <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
-        <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Accounting and Finance</span><br>
-        <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
-        <br>
-        <button class="btn btn-outline btn-info" type="button">
-            <a href="#" th:href="@{~/p/display-job-offer}">
-                <i class="fa fa-check"></i>&nbsp;&nbsp;View deal</a>
-        </button>
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Workstation</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="ibox-content" th:each="offer : ${offers}">
+            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">Empresa: [[${offer.company.name}]]</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Titulo: [[${offer.title}]]</span><br>
+            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Área: [[${offer.area.name}]]</span><br>
+            <br>
+            <button class="btn btn-outline btn-info" type="button">
+                <a href="#" th:href="@{~/p/display-offer/} + ${offer.id}">
+                    <i class="fa fa-check"></i>&nbsp;&nbsp;View deal</a>
+            </button>
+        </div>
     </div>
-
-
-</div>
 
 </div>
 
 <th:block layout:fragment="scripts">
-        <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
-        <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
-        <script th:inline="javascript">
+    <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
+    <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:inline="javascript">
 
-        </script>
-    </th:block>
+    </script>
+</th:block>
 </body>
 </html>

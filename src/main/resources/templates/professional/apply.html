@@ -13,12 +13,29 @@
 </head>
 <body>
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
-    <h1>Applying | Accounting assistant</h1>
+
+    <h1>Applying</h1>
     <br>
     <h2>Select CV</h2>
     <hr>
     <br>
-    <p>...</p>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>CV</td>
+            <td>
+                <button type="button" class="btn btn-w-m btn-primary">Seleccionar</button>
+            </td>
+        </tr>
+        <tr>
+            <td>CV2</td>
+            <td>
+                <button type="button" class="btn btn-w-m btn-primary">Seleccionar</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
     <br>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-paper-plane"></i>&nbsp;&nbsp;To accept</a>
@@ -50,6 +67,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <th:block layout:fragment="scripts">

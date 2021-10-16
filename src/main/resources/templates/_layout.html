@@ -4,7 +4,6 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +22,13 @@
 
 </head>
 
-<body >
-
+<body>
 <div id="wrapper">
-    <div th:replace="/fragments/navbar :: navbarCompany"></div>
+    <div th:replace="/fragments/navbar :: navbarAdmin"></div>
+    <!--<div th:replace="/fragments/navbar :: navbarProfessional"></div>-->
+    <!--<div th:replace="/fragments/navbar :: navbarCompany"></div>-->
+    <!--<div th:replace="/fragments/navbar :: navbarAdmin"></div>-->
+    <!--<div th:replace="/fragments/navbar :: navbarAnnon"></div>-->
 
     <div id="page-wrapper" class="gray-bg">
         <div th:replace="/fragments/navbar-top :: navbar"></div>

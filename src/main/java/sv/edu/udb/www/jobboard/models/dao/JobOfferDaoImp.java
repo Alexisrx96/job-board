@@ -25,6 +25,13 @@ public class JobOfferDaoImp implements JobOfferDao{
     }
 
     @Override
+    public List<JobOffer> getJobOffersByCompany(int id) {
+        String query = "FROM JobOffer J WHERE J.company.id = ?1";
+        var result = entityManager.createQuery(query).setParameter(1,id).getResultList();
+        return result;
+    }
+
+    @Override
     public JobOffer getJobOffer(int id) {
         return entityManager.find(JobOffer.class,id);
     }

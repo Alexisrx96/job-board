@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es"
+      layout:decorate="~{_layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="<http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Offers</title>
+  <th:block layout:fragment="css">
+    <link th:href="@{~/css/plugins/iCheck/custom.css}" rel="stylesheet">
+    <link th:href="@{~/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
+  </th:block>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
+
+  <form>
+    <div class="form-group" >
+      <!--titulo oferta-->
+      <input class="form-control required" type="text" disabled>
+    </div>
+    <br>
+    <div class="form-group" >
+      <label>Empresa : </label>
+      <input class="form-control required" type="text" disabled>
+    </div>
+    <div class="form-group" >
+      <label>Area Laboral : </label>
+      <input class="form-control required" type="text" disabled>
+    </div>
+    <div class="form-group" >
+      <label>Dirección : </label>
+      <input class="form-control required" type="text" disabled>
+    </div>
+    <br>
+    <h2>Offer detail</h2>
+    <hr>
+    <!-- detalle oferta -->
+    <input class="form-control required" type="text" disabled>
+    <br>
+    <br>
+    <button class="btn btn-outline btn-info" type="button">
+      <a href="#" th:href="@{~/p/apply}">
+        <i class="fa fa-star"></i>&nbsp;&nbsp;Apply</a>
+    </button>
+  </form>
+
+</div>
+<th:block layout:fragment="scripts">
+  <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
+  <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
+  <script th:inline="javascript">
+
+  </script>
+</th:block>
+</body>
+</html>

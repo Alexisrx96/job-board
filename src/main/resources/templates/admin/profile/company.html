@@ -34,9 +34,9 @@
     <br>
     <br>
     <!--aprobadas-->
-    <div class="ibox ">
+    <div class="ibox" th:each="company : ${companies}">
         <div class="ibox-title">
-            <h5>Nombre Empresa</h5>
+            <h5>[[${company.name}]]</h5>
             <div class="ibox-tools">
                 <a class="collapse-link">
                     <i class="fa fa-chevron-up"></i>
@@ -44,10 +44,9 @@
             </div>
         </div>
         <div class="ibox-content">
-            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
-            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
-            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Descripción</span><br>
-            <p>detail...</p>
+            <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">[[${company.name}]]</span><br>
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">[[${company.email.id}]]</span><br>
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">[[${company.email.state.name}]]</span><br>
             <br>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

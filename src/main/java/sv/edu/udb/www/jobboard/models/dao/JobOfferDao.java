@@ -7,6 +7,7 @@ import java.util.List;
 public interface JobOfferDao {
 
     List<JobOffer> getJobOffers();
+    List<JobOffer> getJobOffersByCompany(int id);
     JobOffer getJobOffer(int id);
     void updateJobOffer(JobOffer jobOffer);
     void deleteJobOffer(int id);

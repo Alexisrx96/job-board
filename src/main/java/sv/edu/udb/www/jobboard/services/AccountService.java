@@ -1,6 +1,7 @@
 package sv.edu.udb.www.jobboard.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import sv.edu.udb.www.jobboard.models.dao.*;
 import sv.edu.udb.www.jobboard.models.dto.CompanyAccountForm;
@@ -11,6 +12,10 @@ import sv.edu.udb.www.jobboard.models.entities.ProfesionalProfile;
 
 @Service
 public class AccountService {
+
+    @Autowired
+    BCryptPasswordEncoder encoder;
+
     @Autowired
     AccountDao accountDao;
     @Autowired
@@ -41,8 +46,8 @@ public class AccountService {
     public CompanyProfile newCompany(CompanyAccountForm company){
         Account acc = new Account();
         acc.setId(company.getEmail());
-        acc.setPwrd(company.getPassword());
-        acc.setConfirmCode("123456"); //TODO
+        acc.setPwrd(encoder.encode(company.getPassword()));
+        acc.setConfirmCode("123456"); //TODO GENERATE RANDOMLY
         acc.setState(accountStateDao.getAccountState(3));
         acc.setType(accountTypeDao.getAccountType(2));
         accountDao.createAccount(acc);
@@ -57,8 +62,8 @@ public class AccountService {
     public ProfesionalProfile newCompany(ProfessionalAccountForm professional){
         Account acc = new Account();
         acc.setId(professional.getEmail());
-        acc.setPwrd(professional.getPassword());
-        acc.setConfirmCode("123456"); //TODO
+        acc.setPwrd(encoder.encode(professional.getPassword()));
+        acc.setConfirmCode("123456"); //TODO GENERATE RANDOMLY
         acc.setType(accountTypeDao.getAccountType(3));
         acc.setState(accountStateDao.getAccountState(3));
         accountDao.createAccount(acc);

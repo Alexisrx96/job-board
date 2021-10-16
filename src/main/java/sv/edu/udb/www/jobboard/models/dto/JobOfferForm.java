@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Validated
 @Getter
@@ -14,10 +15,10 @@ import javax.validation.constraints.NotNull;
 public class JobOfferForm {
     private int id;
     @NotBlank
-    @Max(200)
+    @Size(max = 200)
     private String title;
     @NotBlank
-    @Max(65535)
+    @Size(max = 65535)
     private String description;
     @NotNull
     private int company;
