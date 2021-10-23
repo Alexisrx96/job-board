@@ -4,13 +4,14 @@
 <head>
 </head>
 <body>
-<nav class="navbar-default navbar-static-side" role="navigation" th:fragment="navbarCompany">
+
+<nav class="navbar-default navbar-static-side" role="navigation" th:fragment="navbar">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="block m-t-xs font-bold">Example user</span>
+                        <span class="block m-t-xs font-bold" th:text="${session.username}"></span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="dropdown-item" href="login.html">Logout</a></li>
@@ -20,26 +21,94 @@
                     BDT
                 </div>
             </li>
-            <li th:classappend="${module == 'home' ? 'active' : ''}">
-                <a href="#" th:href="@{~/c/profile}">
-                    <i class="fa fa-user-circle"></i>
-                    <span class="nav-label">Mi Perfil</span></a>
-            </li>
-            <li th:classappend="${module == 'home' ? 'active' : ''}">
-                <a href="#" th:href="@{~/c/publish-offer}">
-                    <i class="fa fa-file-text"></i>
-                    <span class="nav-label">Publicar Vacantes</span></a>
-            </li>
-            <li th:classappend="${module == 'home' ? 'active' : ''}">
-                <a href="#" th:href="@{~/c/offers}">
-                    <i class="fa fa-briefcase"></i>
-                    <span class="nav-label">Mis Vacantes</span></a>
-            </li>
-            <li th:classappend="${module == 'home' ? 'active' : ''}">
-                <a href="#" th:href="@{~/c/applicants}">
-                    <i class="fa fa-list-ul"></i>
-                    <span class="nav-label">Candidatos</span></a>
-            </li>
+
+            <th:block th:if="${session.role} == null ">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/profile}">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="nav-label">My Profile</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/resume}">
+                        <i class="fa fa-file-text"></i>
+                        <span class="nav-label">My CV</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/job-offer}">
+                        <i class="fa fa-briefcase"></i>
+                        <span class="nav-label">Job Offers</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/applications}">
+                        <i class="fa fa-list-ul"></i>
+                        <span class="nav-label">My Applications</span></a>
+                </li>
+            </th:block>
+
+            <th:block th:if="${session.role} == 'COMPANY'">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/c/profile}">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="nav-label">Mi Perfil</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/c/publish-offer}">
+                        <i class="fa fa-file-text"></i>
+                        <span class="nav-label">Publicar Vacantes</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/c/offers}">
+                        <i class="fa fa-briefcase"></i>
+                        <span class="nav-label">Mis Vacantes</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/c/applicants}">
+                        <i class="fa fa-list-ul"></i>
+                        <span class="nav-label">Candidatos</span></a>
+                </li>
+            </th:block>
+
+            <th:block th:if="${session.role} == 'ADMIN'">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/a/companies}">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="nav-label">Perfiles Empresa</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/a/professionals}">
+                        <i class="fa fa-file-text"></i>
+                        <span class="nav-label">Perfiles Profesional</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/a/offers}">
+                        <i class="fa fa-briefcase"></i>
+                        <span class="nav-label">Ofertas</span></a>
+                </li>
+            </th:block>
+
+            <th:block th:if="${session.role} == 'PROFESSIONAL'">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/profile}">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="nav-label">My Profile</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/resume}">
+                        <i class="fa fa-file-text"></i>
+                        <span class="nav-label">My CV</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/job-offers}">
+                        <i class="fa fa-briefcase"></i>
+                        <span class="nav-label">Job Offers</span></a>
+                </li>
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{~/p/applications}">
+                        <i class="fa fa-list-ul"></i>
+                        <span class="nav-label">My Applications</span></a>
+                </li>
+            </th:block>
+
         </ul>
 
     </div>
@@ -101,13 +170,11 @@
                     <i class="fa fa-user-circle"></i>
                     <span class="nav-label">My Profile</span></a>
             </li>
-
             <li th:classappend="${module == 'home' ? 'active' : ''}">
                 <a href="#" th:href="@{~/p/resume}">
                     <i class="fa fa-file-text"></i>
                     <span class="nav-label">My CV</span></a>
             </li>
-
             <li th:classappend="${module == 'home' ? 'active' : ''}">
                 <a href="#" th:href="@{~/p/job-offers}">
                     <i class="fa fa-briefcase"></i>
@@ -138,6 +205,7 @@
                     BDT
                 </div>
             </li>
+
             <li th:classappend="${module == 'home' ? 'active' : ''}">
                 <a href="#" th:href="@{~/p/profile}">
                     <i class="fa fa-user-circle"></i>
@@ -158,6 +226,7 @@
                     <i class="fa fa-list-ul"></i>
                     <span class="nav-label">My Applications</span></a>
             </li>
+
         </ul>
 
     </div>
