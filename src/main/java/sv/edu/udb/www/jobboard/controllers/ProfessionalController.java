@@ -62,7 +62,9 @@ public class ProfessionalController {
 
     @GetMapping(path = "/display-offer/{id}")
     public String displayJobOffer(Model model,@PathVariable int id){
-        model.addAttribute("offer",jobOfferService.getJobOffer(id));
+        var offer = jobOfferService.getJobOffer(id);
+        model.addAttribute("offer",offer);
+        model.addAttribute("title", offer.getTitle());
         return "professional/display-job-offer";
     }
 

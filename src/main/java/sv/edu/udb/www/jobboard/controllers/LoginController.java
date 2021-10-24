@@ -12,6 +12,6 @@ import sv.edu.udb.www.jobboard.models.dto.LoginForm;
 public class LoginController {
     @GetMapping
     public String login(Model model){
-        return "login";
+        return "login2";
     }
 }

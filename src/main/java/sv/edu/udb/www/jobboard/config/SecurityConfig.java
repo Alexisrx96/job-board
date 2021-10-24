@@ -12,7 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import sv.edu.udb.www.jobboard.services.MyUserDetailsService;
+
+import javax.servlet.http.HttpSession;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,52 +30,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //Calls auth provider
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       // auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
-       //auth.authenticationProvider(authProvider());
+       auth.authenticationProvider(authProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-/*
         http
                 .authorizeRequests()
                 .antMatchers("/css/**", "/font-awesome/**", "/fonts/**",
-                        "/img/**", "/js/**","/login","/home",
+                        "/img/**", "/js/**","/lib/**","/login","/",
+                        "/mail", //TODO REMOVE MAIL
                         "/register-company","/register-professional").permitAll()
-                .antMatchers("/p/**").hasAnyRole("Profesional")
-                .antMatchers("/a/**").hasAnyRole("Admin")
-                .antMatchers("/c/**").hasAnyRole("Empresa")
+                .antMatchers("/a/**").hasAnyRole("ADMIN")
+                .antMatchers("/c/**").hasAnyRole("COMPANY")
+                .antMatchers("/p/**").hasAnyRole("PROFESSIONAL")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .loginProcessingUrl("/login").permitAll()
-                .defaultSuccessUrl("/home", true)
-                .successForwardUrl("/home")
-                .failureUrl("/login?error=true")
+                .successHandler(myAuthenticationSuccessHandler())
                 .and()
                 .logout()
-                .logoutUrl("/perform_logout")
+                .logoutUrl("/logout")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-                .and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        //http.addFilter(new AuthFilter());
-        //http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-        /*
-        http.cors().and()
-                .csrf().disable()
-                .authorizeRequests()
-                //.antMatchers("/**").permitAll()
-                //.antMatchers(HttpMethod.GET, "/api/products", "/api/products/**").permitAll()
-                //.antMatchers("/api/orders").hasAnyRole("Customer", "Admin")
-                //.antMatchers(HttpMethod.POST, "/api/submit-order").hasAnyRole("Customer", "Admin")
-                //.antMatchers("/api/**", "/create-admin").hasRole("Admin")
-                .anyRequest().permitAll()
-        //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);*/
+                .permitAll();
     }
 
     //this is how encrypt the user's password
@@ -92,6 +77,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    //This happens after  a successful login
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new CustomAuthenticationSuccessHandler();
     }
 
 }

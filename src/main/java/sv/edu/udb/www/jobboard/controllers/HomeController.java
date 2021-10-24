@@ -32,14 +32,7 @@ public class HomeController {
     }
     @GetMapping(path = "/mail")
     public String mail(){
-        emailService.sendSimpleMessage(/*Escribe tu correo*/"","Bienvenido a ...", "Gracias por formar parte de ...");
+        emailService.sendSimpleMessage("","Bienvenido a ...", "Gracias por formar parte de ...");
         return "index";
-    }
-
-    @GetMapping(path = "/v2")
-    public String getIndex2(Model model){
-        model.addAttribute("some","Index in controller");
-        model.addAttribute("tittle","Index");
-        return "_layout-v2";
     }
 }

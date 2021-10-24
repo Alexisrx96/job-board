@@ -59,7 +59,8 @@ public class AccountService {
         return profile;
     }
 
-    public ProfesionalProfile newCompany(ProfessionalAccountForm professional){
+
+    public ProfesionalProfile newProfesional(ProfessionalAccountForm professional){
         Account acc = new Account();
         acc.setId(professional.getEmail());
         acc.setPwrd(encoder.encode(professional.getPassword()));

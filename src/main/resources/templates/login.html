@@ -9,11 +9,12 @@
 
     <title>INSPINIA | Login 2</title>
 
-    <link th:href="@{~/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{~/font-awesome/css/font-awesome.css}" rel="stylesheet">
+    <link type="text/css"  th:href="@{~/css/bootstrap.min.css}" rel="stylesheet">
+    <link type="text/css"  th:href="@{~/font-awesome/css/font-awesome.css}" rel="stylesheet">
 
-    <link th:href="@{~/css/animate.css}" rel="stylesheet">
-    <link th:href="@{~/css/style.css}" rel="stylesheet">
+    <link type="text/css"  th:href="@{~/css/style.css}" rel="stylesheet">
+    <link type="text/css"  th:href="@{~/css/animate.css}" rel="stylesheet">
+    <link type="text/css"  th:href="@{~/css/style.css}" rel="stylesheet">
 
 </head>
 
@@ -44,7 +45,7 @@
         </div>
         <div class="col-md-6">
             <div class="ibox-content">
-                <form class="m-t" role="form" th:action="@{/perform_login}" method="post">
+                <form class="m-t" role="form" th:action="@{/login}" method="post">
                     <div class="form-group">
                         <input name="email" type="email" class="form-control" placeholder="Email" required="">
                     </div>

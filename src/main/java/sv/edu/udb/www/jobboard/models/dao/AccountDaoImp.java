@@ -34,13 +34,14 @@ public class AccountDaoImp implements AccountDao{
     }
 
     @Override
+    public void createAccount(Account account) {
+        entityManager.persist(account);
+    }
+
+    @Override
     public void deleteAccount(String email) {
         Account account = entityManager.find(Account.class,email);
         entityManager.remove(account);
     }
 
-    @Override
-    public void createAccount(Account account) {
-        entityManager.persist(account);
-    }
 }

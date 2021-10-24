@@ -10,6 +10,8 @@ import sv.edu.udb.www.jobboard.services.AdminService;
 import sv.edu.udb.www.jobboard.services.CompanyService;
 import sv.edu.udb.www.jobboard.services.ProfessionalService;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping(path = "/a")
 public class AdminController {
@@ -33,7 +35,7 @@ public class AdminController {
     }
 
     @GetMapping("/display-offer")
-    public String displayOffer(Model model) {
+    public String displayOffer(Model model, HttpSession session) {
         //model.addAttribute("", new Object());
         return "admin/display-offer";
     }
@@ -44,7 +46,7 @@ public class AdminController {
     }
 
     @GetMapping("/companies")
-    public String companies(Model model) {
+    public String companies(Model model, HttpSession session) {
         model.addAttribute("companies", adminService.getCompanyProfiles());
         return "admin/profile/company";
     }
@@ -56,14 +58,14 @@ public class AdminController {
     }
 
     @GetMapping("/display-company")
-    public String displayCompanies(Model model) {
+    public String displayCompanies(Model model, HttpSession session) {
         //model.addAttribute("", new Object());
         return "admin/profile/display-company";
     }
 
 
     @GetMapping("/display-professional/{id}")
-    public String displayProfessional(Model model, @PathVariable int id) {
+    public String displayProfessional(Model model, @PathVariable int id, HttpSession session) {
         model.addAttribute("professional", professionalService.getProfessional(id));
         return "admin/profile/display-professional";
     }

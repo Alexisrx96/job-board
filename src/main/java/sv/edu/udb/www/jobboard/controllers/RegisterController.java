@@ -38,7 +38,7 @@ public class RegisterController {
     public String saveProfessional(@ModelAttribute("professional")@Valid ProfessionalAccountForm professional, final BindingResult result) {
         if(result.hasErrors())
             return "register-professional";
-        accountService.newCompany(professional);
+        accountService.newProfesional(professional);
         return "redirect:login";
     }
 

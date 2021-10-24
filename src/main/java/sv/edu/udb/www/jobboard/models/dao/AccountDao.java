@@ -11,5 +11,4 @@ public interface AccountDao {
     void updateAccount(Account account);
     void deleteAccount(String email);
     void createAccount(Account account);
-
 }

@@ -18,6 +18,7 @@ public class ProfesionalProfileTagId implements Serializable {
     private static final long serialVersionUID = 6537179792400146898L;
     @Column(name = "profesional_profile_id", nullable = false)
     private Integer profesionalProfileId;
+
     @Column(name = "tag_id", nullable = false)
     private Integer tagId;
 
