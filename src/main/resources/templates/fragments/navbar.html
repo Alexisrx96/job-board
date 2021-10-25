@@ -87,6 +87,7 @@
             </th:block>
 
             <th:block th:if="${session.role} == 'PROFESSIONAL'">
+
                 <li th:classappend="${module == 'home' ? 'active' : ''}">
                     <a href="#" th:href="@{~/p/profile}">
                         <i class="fa fa-user-circle"></i>

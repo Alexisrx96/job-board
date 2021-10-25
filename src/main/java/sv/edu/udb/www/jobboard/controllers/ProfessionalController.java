@@ -12,6 +12,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import sv.edu.udb.www.jobboard.services.JobOfferService;
 import sv.edu.udb.www.jobboard.services.ProfessionalService;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -36,8 +38,9 @@ public class ProfessionalController {
 
 
     //profile
-    @GetMapping(path = "/profile/{id}")
-    public String getProfile( @PathVariable int id, Model model){
+    @GetMapping(path = "/profile")
+    public String getProfile(Model model, HttpSession session){
+        int id = (Integer) session.getAttribute("id");
         model.addAttribute("form", professionalService.getProfessionalAccountForm(id));
         return "professional/profile";
     }

@@ -5,7 +5,7 @@
       xmlns:layout="<http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Offers</title>
+    <title th:text="${title}"></title>
     <th:block layout:fragment="css">
         <link th:href="@{~/css/plugins/iCheck/custom.css}" rel="stylesheet">
         <link th:href="@{~/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
@@ -13,19 +13,17 @@
 </head>
 <body>
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
-<h1>Accounting assistant</h1>
-<br>
-<i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">DIANA Food Products</span><br>
-<br>
-<i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Accounting and Finance</span><br>
-<br>
-<i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="bold">La Union, El Salvador</span><br>
-<br>
-<br>
-    <h2>Offer detail</h2>
-<hr>
-<br>
-<p>detail...</p>
+    <h1>[[${offer.title}]]</h1>
+    <br>
+    <br>
+    <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Área: </span>[[${offer.area.name}]]
+    <br>
+    <br>
+    <br>
+    <h2>Descripción</h2>
+    <hr>
+    <br>
+    <p>[[${offer.description}]]</p>
     <br>
     <br>
     <button class="btn btn-outline btn-info" type="button">

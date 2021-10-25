@@ -56,22 +56,17 @@ public class CustomAuthenticationSuccessHandler   implements AuthenticationSucce
         }
         role = role.replace("ROLE_","");
         final String username = "username";
-        switch (role){
-            case "ADMIN":
-                var admin = accountDao.getAccount(email);
-                session.setAttribute(username,admin.getId());
-
-                break;
-            case "COMPANY":
-                var company = companyProfileDao.getCompanyProfileByEmail(email);
-                session.setAttribute(username,company.getName());
-                session.setAttribute("id", company.getId());
-                break;
-            case "PROFESSIONAL":
-                var professional = profesionalProfileDao.getProfesionalProfileByEmail(email);
-                session.setAttribute(username, professional.getFirstName() + " " + professional.getLastName());
-                session.setAttribute("id",professional.getId());
-                break;
+        if ("ADMIN".equals(role)) {
+            var admin = accountDao.getAccount(email);
+            session.setAttribute(username, admin.getId());
+        } else if ("COMPANY".equals(role)) {
+            var company = companyProfileDao.getCompanyProfileByEmail(email);
+            session.setAttribute(username, company.getName());
+            session.setAttribute("id", company.getId());
+        } else if ("PROFESSIONAL".equals(role)) {
+            var professional = profesionalProfileDao.getProfesionalProfileByEmail(email);
+            session.setAttribute(username, professional.getFirstName() + " " + professional.getLastName());
+            session.setAttribute("id", professional.getId());
         }
 
         session.setAttribute("email",email);

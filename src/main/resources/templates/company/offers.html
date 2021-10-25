@@ -32,7 +32,7 @@
             <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Área: [[${offer.area.name}]]</span><br>
             <br>
             <button class="btn btn-outline btn-info" type="button">
-                <a href="#" th:href="@{~/c/display-offer}">
+                <a href="#" th:href="@{'~/c/display-offer/'+${offer.id}}">
                     <i class="fa fa-check"></i>&nbsp;&nbsp;View deal</a>
             </button>
         </div>

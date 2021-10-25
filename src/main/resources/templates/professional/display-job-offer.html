@@ -15,9 +15,11 @@
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
     <h1>[[${offer.title}]]</h1>
     <br>
-    <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">Empresa: </span>[[${offer.company.name}]] <br>
+    <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="bold">Empresa: </span>[[${offer.company.name}]]
     <br>
-    <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Área: </span>[[${offer.area.name}]]<br>
+    <br>
+    <i class="fa fa-suitcase"></i>&nbsp;&nbsp;<span class="bold">Área: </span>[[${offer.area.name}]]
+    <br>
     <br>
     <br>
     <h2>Descripción</h2>
@@ -27,7 +29,7 @@
     <br>
     <br>
     <button class="btn btn-outline btn-info" type="button">
-        <a href="#" th:href="@{~/c/offers}">
+        <a href="#" th:href="@{~/p/offers}">
             <i class="fa fa-star"></i>&nbsp;&nbsp;Regresar</a>
     </button>
 

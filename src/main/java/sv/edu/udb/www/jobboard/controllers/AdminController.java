@@ -35,37 +35,44 @@ public class AdminController {
     }
 
     @GetMapping("/display-offer")
-    public String displayOffer(Model model, HttpSession session) {
+    public String displayOffer(Model model,
+                               HttpSession session) {
         //model.addAttribute("", new Object());
         return "admin/display-offer";
     }
     @GetMapping("/offers")
-    public String getOffers(Model model) {
+    public String getOffers(Model model,
+                            HttpSession session) {
         //model.addAttribute("", new Object());
         return "admin/offers";
     }
 
     @GetMapping("/companies")
-    public String companies(Model model, HttpSession session) {
+    public String companies(Model model,
+                            HttpSession session) {
         model.addAttribute("companies", adminService.getCompanyProfiles());
         return "admin/profile/company";
     }
 
     @GetMapping("/professionals")
-    public String professionals(Model model) {
+    public String professionals(Model model,
+                                HttpSession session) {
         model.addAttribute("professionals", adminService.getProfessionalProfiles());
         return "admin/profile/professional";
     }
 
     @GetMapping("/display-company")
-    public String displayCompanies(Model model, HttpSession session) {
+    public String displayCompanies(Model model,
+                                   HttpSession session) {
         //model.addAttribute("", new Object());
         return "admin/profile/display-company";
     }
 
 
     @GetMapping("/display-professional/{id}")
-    public String displayProfessional(Model model, @PathVariable int id, HttpSession session) {
+    public String displayProfessional(Model model,
+                                      @PathVariable int id,
+                                      HttpSession session) {
         model.addAttribute("professional", professionalService.getProfessional(id));
         return "admin/profile/display-professional";
     }

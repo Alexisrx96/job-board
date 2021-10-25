@@ -2,6 +2,7 @@ package sv.edu.udb.www.jobboard.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import sv.edu.udb.www.jobboard.services.AreaService;
 import sv.edu.udb.www.jobboard.services.CompanyService;
 import sv.edu.udb.www.jobboard.services.JobOfferService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -36,19 +38,21 @@ public class CompanyController {
         return "area";
     }
 
-    @GetMapping("/profile/{id}")
-    public String profile(Model model, @PathVariable int id) {
+    @GetMapping("/profile")
+    public String profile(Model model, HttpSession session) {
+        int id = (Integer) session.getAttribute("id");
             model.addAttribute("profile", companyService.getCompanyAccountForm(id));
         return "company/profile";
     }
 
     @GetMapping("/applicants")
-    public String applicants(Model model) {
+    public String applicants(Model model, HttpSession session) {
         //model.addAttribute("", new Object());
         return "company/applicants";
     }
-    @GetMapping("/publish-offer/{id}")
-    public String publishOffer(Model model, @PathVariable int id) {
+    @GetMapping("/publish-offer")
+    public String publishOffer(Model model, HttpSession session) {
+        int id = (Integer) session.getAttribute("id");
         var offer = new JobOfferForm();
         offer.setCompany(id);
         offer.setState(1);
@@ -56,21 +60,28 @@ public class CompanyController {
         model.addAttribute("areas", areaService.getAreaList());
         return "company/publish-offer";
     }
-    @PostMapping("/publish-offer")
-    public String saveNewOffer(@ModelAttribute("offer") @Valid JobOfferForm offerForm, final BindingResult result) {
+    @PostMapping(value = "/publish-offer", produces = "application/json")
+    public ResponseEntity<JobOfferForm> saveNewOffer(@ModelAttribute("offer") @Valid JobOfferForm offerForm,
+                                       final BindingResult result,
+                                       HttpSession session) {
         if (result.hasErrors()) {
-            return "/company/publish-offer";
+            return ResponseEntity.badRequest().body(offerForm);
         }
         companyService.publishOffer(offerForm);
-        return "redirect:/";
+
+        return ResponseEntity.ok(offerForm);
     }
     @GetMapping("/display-offer/{id}")
-    public String displayOffer(Model model, @PathVariable int id) {
+    public String displayOffer(Model model,
+                               @PathVariable int id,
+                               HttpSession session) {
         model.addAttribute("offer", jobOfferService.getJobOffer(id));
         return "company/display-offer";
     }
-    @GetMapping("/offers/{id}")
-    public String offers(Model model, @PathVariable int id) {
+    @GetMapping("/offers")
+    public String offers(Model model,
+                         HttpSession session) {
+        int id = (Integer) session.getAttribute("id");
         model.addAttribute("offers", companyService.getMyOffers(id));
         return "company/offers";
     }

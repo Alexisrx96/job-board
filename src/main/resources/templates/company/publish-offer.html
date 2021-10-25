@@ -15,7 +15,7 @@
 <div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
 <h1>Nueva Vacante</h1>
     <br>
-    <form th:object="${offer}" method="post" th:action="@{/c/publish-offer}">
+    <form th:object="${offer}" method="post" th:action="@{/c/publish-offer}" id="publish">
 
         <div class="form-group row"><label class="col-lg-2 col-form-label">Area Laboral</label>
             <label class="text-warning" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></label>
@@ -44,7 +44,7 @@
         <br>
         <br>
         <center>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="SubmitBtn">
                 <i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Publicar</a>
             </button>
         </center>
@@ -56,8 +56,8 @@
 <th:block layout:fragment="scripts">
     <script th:src="@{~/js/plugins/steps/jquery.steps.min.js}"></script>
     <script th:src="@{~/js/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:src="@{~/js/company/publishOffer.js}"></script>
     <script th:inline="javascript">
-
     </script>
 </th:block>
 </body>
