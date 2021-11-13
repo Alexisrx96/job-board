@@ -11,6 +11,8 @@ import sv.edu.udb.www.jobboard.models.dto.CompanyAccountForm;
 import sv.edu.udb.www.jobboard.models.dto.ProfessionalAccountForm;
 import sv.edu.udb.www.jobboard.services.AccountService;
 import sv.edu.udb.www.jobboard.services.AreaService;
+import sv.edu.udb.www.jobboard.services.EmailService;
+import sv.edu.udb.www.jobboard.util.CodeGenerator;
 
 import javax.validation.Valid;
 
@@ -21,6 +23,8 @@ public class RegisterController {
     AccountService accountService;
     @Autowired
     AreaService areaService;
+    @Autowired
+    EmailService emailService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -38,7 +42,11 @@ public class RegisterController {
     public String saveProfessional(@ModelAttribute("professional")@Valid ProfessionalAccountForm professional, final BindingResult result) {
         if(result.hasErrors())
             return "register-professional";
-        accountService.newProfesional(professional);
+        var code = accountService.newProfesional(professional).getEmail().getConfirmCode();
+        emailService.sendSimpleMessage(professional.getEmail(),
+                String.format("Bienvenido %s", professional.getFirstName()),
+                "Gracias por formar parte de a la bolsa de trabajo\ntu código es: " + code
+                );
         return "redirect:login";
     }
 
@@ -52,7 +60,11 @@ public class RegisterController {
     public String saveCompany(@ModelAttribute("company")@Valid CompanyAccountForm company, final BindingResult result) {
         if(result.hasErrors())
             return "register-company";
-        accountService.newCompany(company);
+        var code = accountService.newCompany(company).getEmail().getConfirmCode();
+        emailService.sendSimpleMessage(company.getEmail(),
+                String.format("Bienvenido %s", company.getName()),
+                "Gracias por formar parte de a la bolsa de trabajo\ntu código es: " + code
+        );
         return "redirect:login";
     }
 }

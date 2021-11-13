@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**", "/font-awesome/**", "/fonts/**",
                         "/img/**", "/js/**","/lib/**","/login","/",
-                        "/mail", //TODO REMOVE MAIL
+                        "/mail/**", //TODO REMOVE MAIL
                         "/register-company","/register-professional").permitAll()
                 .antMatchers("/a/**").hasAnyRole("ADMIN")
                 .antMatchers("/c/**").hasAnyRole("COMPANY")

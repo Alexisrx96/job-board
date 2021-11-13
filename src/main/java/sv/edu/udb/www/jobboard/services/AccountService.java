@@ -9,6 +9,7 @@ import sv.edu.udb.www.jobboard.models.dto.ProfessionalAccountForm;
 import sv.edu.udb.www.jobboard.models.entities.Account;
 import sv.edu.udb.www.jobboard.models.entities.CompanyProfile;
 import sv.edu.udb.www.jobboard.models.entities.ProfesionalProfile;
+import sv.edu.udb.www.jobboard.util.CodeGenerator;
 
 @Service
 public class AccountService {
@@ -28,6 +29,8 @@ public class AccountService {
     AccountTypeDao accountTypeDao;
     @Autowired
     AreaDao areaDao;
+    @Autowired
+    CodeGenerator codeGenerator;
 
     public ProfesionalProfile getProfesionalProfile(String email){
         return profesionalProfileDao.getProfesionalProfileByEmail(email);
@@ -47,7 +50,7 @@ public class AccountService {
         Account acc = new Account();
         acc.setId(company.getEmail());
         acc.setPwrd(encoder.encode(company.getPassword()));
-        acc.setConfirmCode("123456"); //TODO GENERATE RANDOMLY
+        acc.setConfirmCode(codeGenerator.generate());
         acc.setState(accountStateDao.getAccountState(3));
         acc.setType(accountTypeDao.getAccountType(2));
         accountDao.createAccount(acc);
@@ -64,7 +67,7 @@ public class AccountService {
         Account acc = new Account();
         acc.setId(professional.getEmail());
         acc.setPwrd(encoder.encode(professional.getPassword()));
-        acc.setConfirmCode("123456"); //TODO GENERATE RANDOMLY
+        acc.setConfirmCode(codeGenerator.generate());
         acc.setType(accountTypeDao.getAccountType(3));
         acc.setState(accountStateDao.getAccountState(3));
         accountDao.createAccount(acc);

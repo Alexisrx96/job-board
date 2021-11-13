@@ -22,6 +22,15 @@ public class AreaDaoImp implements AreaDao {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Area> getAreas(String name){
+        String query = "SELECT A FROM Area A where A.name like ?1";
+        return entityManager.createQuery(query)
+                .setParameter(1,"%"+name+"%")
+                .getResultList();
+    }
+
     @Override
     public void createArea(Area area){
         entityManager.persist(area);

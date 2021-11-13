@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AreaDao {
     List<Area> getAreas();
+    List<Area> getAreas(String name);
     Area getArea(int id);
     void updateArea(Area area);
     void deleteArea(int id);

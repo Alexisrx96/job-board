@@ -1,24 +1,24 @@
 package sv.edu.udb.www.jobboard.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import sv.edu.udb.www.jobboard.services.EmailService;
+import org.springframework.web.bind.annotation.PathVariable;
+import sv.edu.udb.www.jobboard.models.dao.AreaDao;
+import sv.edu.udb.www.jobboard.util.CodeGenerator;
 
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class HomeController {
 
     @Autowired
-    EmailService emailService;
+    AreaDao areaDao;
+    @Autowired
+    CodeGenerator random;
 
     @ModelAttribute("module")
     public String module() {
@@ -30,9 +30,8 @@ public class HomeController {
         model.addAttribute("tittle","Index");
         return "index";
     }
-    @GetMapping(path = "/mail")
-    public String mail(){
-        emailService.sendSimpleMessage("","Bienvenido a ...", "Gracias por formar parte de ...");
-        return "index";
+    @GetMapping(path = "/mail/{name}")
+    public ResponseEntity<?> mail(@PathVariable String name){
+        return ResponseEntity.ok(areaDao.getAreas(name));
     }
 }
